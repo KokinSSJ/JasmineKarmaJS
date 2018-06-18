@@ -11,3 +11,11 @@ var dc = {};
 global.$dc = dc;
 
 })(window);
+
+var addOne = function(a) {
+	return a+1;
+}
+
+var add = function(a,b) {
+	return a+b;
+}
