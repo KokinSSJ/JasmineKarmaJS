@@ -89,6 +89,7 @@ karma {
 	karmaRun {
 		dependsOn npm
 	}*/
+	logLevel= 'INFO'
 }
 
 clean.dependsOn karmaClean
