@@ -1,0 +1,60 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath()
+module.exports = function(config) { config.set({
+    "basePath": "../",
+    "colors": true,
+    "logLevel": "ERROR",
+    "files": [
+        "jquery.js",
+        "webapp/resources/**/*.js",
+        "js-spec/**/*test.js"
+    ],
+    "browsers": [
+        "PhantomJS",
+        "ChromeHeadless"
+    ],
+	/*browserDisconnectTimeout: 10000,
+    browserDisconnectTolerance: 3,
+    browserNoActivityTimeout: 60000,
+    flags: [
+      '--headless',
+			'--disable-web-security',
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+          '--remote-debugging-port=9223'
+    ], */
+    "frameworks": [
+        "jasmine"
+    ],
+    "reporters": [
+        "junit",
+        "progress"
+    ],
+    "preprocessors": {
+        
+    },
+    "exclude": [
+        
+    ],
+    "junitReporter": {
+        "outputDir": "test-dir"
+    },
+    "concurency": "Infinity",
+    "DEFAULT_NODE_VERSION": "6.11.2",
+/*	browser: 'Chrome_without_security',
+    customLaunchers: {
+      Chrome_without_security: {
+        base: 'Chrome',
+        flags: [
+		'--headless',
+			'--disable-web-security',
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+          '--remote-debugging-port=9223',
+        ],
+      },
+    }, */
+	//logLevel: config.LOG_INFO,
+	logLevel: config.LOG_DEBUG,
+}) };
