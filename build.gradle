@@ -41,6 +41,7 @@ task karma(type: Exec) {
   }
 }*/
 
+
 karma {
     basePath = '../' // <1>
     colors = true // <2>
@@ -55,13 +56,40 @@ karma {
         testFiles = ['**/*test.js'] // <3>
     }
 
-    //browsers = ['PhantomJS'] // <4>
-    browsers = ['PhantomJS', 'Chrome', 'ChromeHeadless'] // <4>
+    browsers = ['PhantomJS'] // <4>
+    //browsers = ['PhantomJS', 'Chrome', 'ChromeHeadless'] // <4>
     frameworks = ['jasmine'] // <5>
+     //reporters = ['junit'] // <6>
     reporters = ['junit', 'progress'] // <6>
     junitReporter = [outputDir: 'test-dir' ]
-    
+    concurency = 'Infinity'
+	
+	/*customLaunchers = [
+     ChromeHeadless = [
+        base:   'Chrome',
+        flags:  [
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222',
+        ],
+      ]
+	]
+    */
+	
+	/*// Install packages from package.json
+	task npm(type: Exec) {
+		description = "Grab NodeJS dependencies (from package.json)"
+		commandLine = ['npm', "install", 'puppeteer']
+		outputs.dir "node_modules"
+
+		//tasks.npmBin.execute()
+
+	}
+	
+	karmaRun {
+		dependsOn npm
+	}*/
 }
 
-//clean.dependsOn karmaClean
+clean.dependsOn karmaClean
 
