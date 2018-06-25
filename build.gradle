@@ -53,7 +53,7 @@ task karma(type: NodeTask, dependsOn: npmInstall, description: 'Executes karma t
 	} else {
 		script = 
 	} */
-	def karmaConfigPath = project.file("${project.buildDir.absolutePath}/karma.conf.js").absolutePath
+	def karmaConfigPath = project.file("${rootProject.projectDir}/karma.conf.js").absolutePath
 	script = project.file("node_modules/karma/bin/karma")
 	args = ['start', karmaConfigPath, '--single-run', '--color']
 	
