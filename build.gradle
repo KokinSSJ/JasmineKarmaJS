@@ -10,7 +10,9 @@
 //apply plugin: 'java-library'
 
 plugins {
-    id 'com.craigburke.karma' version '1.4.4'
+   // id 'com.craigburke.karma' version '1.4.4'
+   id "com.moowork.grunt" version "1.2.0"
+   id "com.moowork.node" version "1.2.0"
     id 'java-library'
 }
 
@@ -40,57 +42,8 @@ task karma(type: Exec) {
     commandLine 'karma', 'start', '--single-run true'
   }
 }*/
-
-
-karma {
-    basePath = '../' // <1>
-    colors = true // <2>
-    profile('default')  {
-        libraryBases = ['']
-        libraryFiles = ['jquery.js'] // <1>
-
-        sourceBases = ['webapp/resources/']
-        sourceFiles = ['**/*.js'] // <2>
-
-        testBases = ['js-spec/']
-        testFiles = ['**/*test.js'] // <3>
-    }
-
-    browsers = ['PhantomJS'] // <4>
-    //browsers = ['PhantomJS', 'Chrome', 'ChromeHeadless'] // <4>
-    frameworks = ['jasmine'] // <5>
-     //reporters = ['junit'] // <6>
-    reporters = ['junit', 'progress'] // <6>
-    junitReporter = [outputDir: 'test-dir' ]
-    concurency = 'Infinity'
-	
-	/*customLaunchers = [
-     ChromeHeadless = [
-        base:   'Chrome',
-        flags:  [
-          '--headless',
-          '--disable-gpu',
-          '--remote-debugging-port=9222',
-        ],
-      ]
-	]
-    */
-	
-	/*// Install packages from package.json
-	task npm(type: Exec) {
-		description = "Grab NodeJS dependencies (from package.json)"
-		commandLine = ['npm', "install", 'puppeteer']
-		outputs.dir "node_modules"
-
-		//tasks.npmBin.execute()
-
-	}
-	
-	karmaRun {
-		dependsOn npm
-	}*/
-	logLevel= 'INFO'
+task helloWorld(type: GruntTask) {
+	dependsOn npmInstall
+	dependsOn installGrunt
 }
-
-clean.dependsOn karmaClean
 
