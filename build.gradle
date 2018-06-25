@@ -42,8 +42,7 @@ task karma(type: Exec) {
     commandLine 'karma', 'start', '--single-run true'
   }
 }*/
-task helloWorld(type: GruntTask) {
+task gruntTest(type: GruntTask) {
 	dependsOn npmInstall
 	dependsOn installGrunt
 }
-
