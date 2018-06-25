@@ -46,3 +46,21 @@ task gruntTest(type: GruntTask) {
 	dependsOn npmInstall
 	dependsOn installGrunt
 }
+
+task karma(type: NodeTask, dependsOn: npmInstall, description: 'Executes karma tests in single run') {
+	/*if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+		script = " npm config get prefix"
+	} else {
+		script = 
+	} */
+	def karmaConfigPath = project.file("${project.buildDir.absolutePath}/karma.conf.js").absolutePath
+	script = project.file("node_modules/karma/bin/karma")
+	args = ['start', karmaConfigPath, '--single-run', '--color']
+	
+	
+	def testTask = project.tasks.findByName('test')
+    if (testTask) {
+        testTask.dependsOn karma
+    }	
+}
+	
