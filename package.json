@@ -7,6 +7,7 @@
     "jasmine": "*",
     "phantomjs-prebuilt": "*",
     "phantomjs": "*",
-    "karma-jasmine": "*"
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*"
   }
 }
