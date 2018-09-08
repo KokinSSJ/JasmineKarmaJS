@@ -96,23 +96,23 @@ task karma(type: NodeTask, dependsOn: npmInstall, description: 'Executes karma t
 					//println key + " " + value2
 				}
 			}
-			println " " 
 		}
 	}
-	def check= ""
+	def check= "\""
 	map.get("storyeditor").each {
 			check+="--check=" + it + " "
 
 
 		//check + "--check=" + it " " 
 	}
+	check+="\""
 	println check
 
 	println map
-	inputs.files("${rootProject.projectDir}/karma.conf.properties")
+	inputs.files("${rootProject.projectDir}/karma.conf.properties", "${rootProject.projectDir}/karma.conf.js")
 	def karmaConfigPath = project.file("${rootProject.projectDir}/karma.conf.js").absolutePath
 	script = project.file("${rootProject.projectDir}/node_modules/karma/bin/karma")
-	args = ['start', karmaConfigPath, check, '--single-run', '--color']
+	args = ['start', karmaConfigPath, "$check", '--single-run', '--color']
 	
 	
 	def testTask = project.tasks.findByName('test')
