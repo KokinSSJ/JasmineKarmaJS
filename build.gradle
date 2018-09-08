@@ -81,31 +81,21 @@ task karma(type: NodeTask, dependsOn: npmInstall, description: 'Executes karma t
 			map.put(key, list)
 			value.forEach {key1, value2 -> if(!key1.equals("description")) {
 					// key -> mock-files and test-files
-					//println value2
 					if(key1.equals("mock-files") || key1.equals("test-files")) {
 						if(value2 != null && value2 instanceof List){
-							//value2.each {
-								//println it
-								//list.add(it)
-							//}
 							list.addAll(value2)
 						}
 						
 					}
-					println " "
-					//println key + " " + value2
 				}
 			}
 		}
 	}
-	def check= "\""
+	def check= ""
 	map.get("storyeditor").each {
-			check+="--check=" + it + " "
-
-
-		//check + "--check=" + it " " 
+			check+="--file=" + it + " "
 	}
-	check+="\""
+
 	println check
 
 	println map

@@ -4,9 +4,9 @@ function mergeFilesWithArgv(staticFiles) {
     var source = staticFiles, argv = process.argv;
 
     argv.forEach(function (arg) {
-        var index = arg.indexOf('--check=');
+        var index = arg.indexOf('--file=');
 		if(index !== -1) {
-			var elements = arg.split('--check=');
+			var elements = arg.split('--file=');
 			elements.forEach(function(element) {
 			 if(element !== "") {
 				 source.push(element);
@@ -14,6 +14,7 @@ function mergeFilesWithArgv(staticFiles) {
 			});
 		}    
     });  
+	console.log("Actual sources: ");
 	console.log(source);
     return source;
 
