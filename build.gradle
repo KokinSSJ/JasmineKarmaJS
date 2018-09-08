@@ -32,6 +32,9 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/org.primefaces/primefaces
+compile group: 'org.primefaces', name: 'primefaces', version: '6.2'
+    
 }
 /*
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -68,6 +71,22 @@ task karma(type: NodeTask, dependsOn: npmInstall, description: 'Executes karma t
 	} else {
 		script = 
 	} */
+	doFirst {
+		def jsonFile = project.file("${rootProject.projectDir}/karma.conf.properties")
+		def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+		def map = new HashMap<>();
+        parsedJson.'setup-files'.forEach { key, value -> if(!key.equals("description")) {
+				//println value
+				value.forEach {key1, value2 -> if(!key1.equals("description")) {
+						println key + " " + value2
+						map.put(key, value2)
+					}
+				}
+			}
+		}
+		
+	}
+	inputs.files("${rootProject.projectDir}/karma.conf.properties")
 	def karmaConfigPath = project.file("${rootProject.projectDir}/karma.conf.js").absolutePath
 	script = project.file("${rootProject.projectDir}/node_modules/karma/bin/karma")
 	args = ['start', karmaConfigPath, '--single-run', '--color']
