@@ -11,7 +11,7 @@ function mergeFilesWithArgv(staticFiles) {
 			 if(element !== "") {
 				 source.push(element);
 			 }
-			});
+			}); 
 		}    
     });  
 	console.log("Actual sources: ");
