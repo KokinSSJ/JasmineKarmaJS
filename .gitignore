@@ -7,3 +7,4 @@ build/
 gradle/
 test-dir/
 node_modules/
+package-lock.json
