@@ -14,6 +14,7 @@ module.exports = function(config) { config.set({
         "jasmine" 
     ],
     "reporters": [
+        "junit",
         "progress"
     ],
     "preprocessors": {
