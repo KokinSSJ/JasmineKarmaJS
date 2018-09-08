@@ -11,10 +11,9 @@ module.exports = function(config) { config.set({
         "PhantomJS"
     ],
     "frameworks": [
-        "jasmine"
+        "jasmine" 
     ],
     "reporters": [
-        "junit",
         "progress"
     ],
     "preprocessors": {
