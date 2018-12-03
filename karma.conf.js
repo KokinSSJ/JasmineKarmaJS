@@ -27,11 +27,11 @@ config.set({
     "logLevel": "INFO",
     "files": mergeFilesWithArgv([
         "jquery.js",
-        "webapp/resources/**/*.js",
+        "webapp/resources/**/*.js" ,
         "js-spec/**/*test.js"
     ]),
     "browsers": [
-        "PhantomJS"
+        "PhantomJS" 
     ],
     "frameworks": [
         "jasmine" 
@@ -47,7 +47,7 @@ config.set({
         
     ],
     "junitReporter": {
-        "outputDir": "test-dir"
+        "outputDir": "build/test-dir"
     },
     "concurency": "Infinity"
 }) };
